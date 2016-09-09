@@ -1,0 +1,244 @@
+@import 'https://fonts.googleapis.com/css?family=Muli:300,400|Source+Sans+Pro:200';
+
+
+/**
+======================
+    General Styles
+======================
+**/
+body {
+    margin: 0;
+    padding: 0;
+    background: #263238;
+    font-family: 'Muli', sans-serif;
+    font-weight: 300;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+.btn {
+    border-radius: 0;
+}
+.btn-primary {
+    background: #448AFF;
+}
+p, li {
+    font-weight: 400;
+    color: #424242;
+}
+
+.container {
+    width: 85%;
+}
+.title {
+    margin-bottom: 40px;
+}
+
+.title span {
+    font-size: 24px;
+}
+.shadow {
+    box-shadow: 0px 3px 7px 0.001em rgba(0,0,0,0.2);
+}
+
+
+/**
+======================
+    Forms
+======================
+**/
+
+.buttons button {
+    border-radius: 0;
+    background: #448AFF;
+    margin-top: 30px;
+}
+
+.buttons .fa {
+    color: white;
+}
+.buttons button:first-child {
+    margin-right: 5px;
+}
+.search {
+    text-align: center;
+}
+.search .search-box {
+    height: 50px;
+    border: none;
+    border-right: none;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    width: 500px;
+    padding: 0 30px;
+    color: #a8a8a8;
+}
+
+.search .search-box:focus {
+    outline: none;
+}
+
+.search .btn-blue {
+    background: #448AFF;
+    color: white;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #448AFF;
+    position: relative;
+    bottom: 2px;
+    font-size: 21px;
+    height: 50px;
+}
+.add-customer-form {
+    width: 500px;
+    margin: 15px auto;
+}
+
+.edit-customer-form {
+    width: 100%;
+}
+
+.add-customer-form input, .edit-customer-form input {
+    height: 50px;
+    border: none;
+    border-right: none;
+    width: 500px;
+    padding: 0 30px;
+    color: #a8a8a8;
+    margin-bottom: -15px;
+    border-radius: 0;
+}
+.edit-explanation {
+    padding-top: 20px;
+    min-height: 50px;
+    background: #fff;
+    border: none;
+    border-right: none;
+    width: 500px;
+    padding: 0 30px;
+    color: #a8a8a8;
+    margin-bottom: -10px;
+    border-radius: 0;
+}
+.edit-explanation p {
+    padding-top: 15px;
+}
+.btn-add-customer {
+    height: 50px;
+    border: none;
+    border-right: none;
+    width: 500px;
+    padding: 0 30px;
+    color: #fff;
+    margin-top: 0;
+    border-radius: 0;
+    background: #448AFF;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group .fa {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.form-group .fvalid .fa { 
+    color: #00E676;
+}
+.form-group .finvalid .fa {
+    color: #F44336;
+}
+
+.btn-add-customer:disabled {
+    background: #b3cfff;
+}
+.ng-dirty.ng-touched.ng-valid {
+    border: 1px solid #00E676;
+}
+.ng-dirty.ng-touched.ng-invalid {
+    border: 1px solid #F44336;
+}
+/**
+======================
+    Customer List
+======================
+**/
+.customers {
+    padding-top: 0px;
+}
+.list-inline {
+    background: #fff;
+    margin: 4px 0 0 0;
+    height: 60px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.list-inline>li {
+    text-align: center;
+    width: 21%;
+    background: #fff;
+    padding: 18px 0;
+    font-size: 13px;
+}
+.list-inline .short {
+    width: 12%;
+}
+.list-inline .long {
+    width: 30%;
+}
+.list-inline li.edit {
+    width: 50px;
+    background: #2196F3;
+    padding: 20px 0;
+}
+.list-inline li.delete {
+    width: 50px;
+    background: #F44336;
+    padding: 20px 0;
+}
+.list-inline button {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.list-inline li .fa {
+    color: white;
+    font-size: 18px;
+}
+
+/**
+======================
+    Modal
+======================
+**/
+.delete-modal .modal-content {
+    border-radius: 0;
+    top: 180px;
+}
+.delete-modal .modal-header {
+    border-bottom: none;
+}
+
+.delete-modal .modal-footer {
+    border-top: none;
+}
+
+h3.modal-title {
+    color: #424242;
+}
+
+.modal-body p {
+    font-size: 18px;
+}

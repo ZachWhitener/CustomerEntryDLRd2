@@ -1,0 +1,15 @@
+{
+  "name": "CustomerEntry",
+  "version": "0.1.0",
+  "description": "Second round of code challenge for Detroit Labs",
+  "main": "server.js",
+  "repository": "",
+  "author": "Zach Whitener <zachwhitener94@gmail.com>",
+  "dependencies": {
+    "express": "~3.2.4",
+    "body-parser": "~1.15.2",
+    "jade": "~1.11.0",
+    "mongoose": "~4.6.0",
+    "nodemon": "~1.10.2"
+  }
+}

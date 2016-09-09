@@ -1,0 +1,130 @@
+extends ../index
+
+block content
+    .container(ng-controller='CustomerController as customerList')
+        h1.title Customer List: 
+            span {{customerList.customers.length}} total
+       
+       
+        // - Search Customer functionality
+        //- .search(ng-show="showForm === 1")
+            form.search-form(action='' method='')
+                input.search-box(type='text' name='term' placeholder='search customers')
+                button.btn.btn-blue(type='submit') 
+                    i.fa.fa-search
+        
+        
+        // - Add Customer Form
+        .add-customer(ng-show="showForm === 2")
+            form.add-customer-form(action='/api/add-customer' method='POST' name='addCustomerForm' novalidate)
+                h4 Add Customer
+                .form-group
+                    span.fvalid(ng-if='addCustomerForm.firstname.$valid')
+                        i.fa.fa-check
+                    span.finvalid(ng-if='addCustomerForm.firstname.$invalid && addCustomerForm.firstname.$dirty')
+                        i.fa.fa-exclamation
+                    input.form-control(type='text' name='firstname' placeholder='first name *' ng-model='customerForm.firstname' ng-required="true")
+                .form-group
+                    span.fvalid(ng-if='addCustomerForm.lastname.$valid')
+                        i.fa.fa-check
+                    span.finvalid(ng-if='addCustomerForm.lastname.$invalid && addCustomerForm.lastname.$dirty')
+                        i.fa.fa-exclamation
+                    input.form-control(type='text' name='lastname' placeholder='last name *' ng-model='customerForm.lastname' ng-required="true")
+                .form-group
+                    input.form-control(type='email' name='email' placeholder='email *' ng-model='customerForm.email' ng-required="true")
+                    span.fvalid(ng-if='addCustomerForm.email.$valid')
+                        i.fa.fa-check
+                    span.finvalid(ng-if='addCustomerForm.email.$invalid && addCustomerForm.email.$dirty')
+                        i.fa.fa-exclamation
+                .form-group
+                    input.form-control(type='text' name='phone' ng-model='customerForm.phone' placeholder='phone (optional)')
+                    span.fvalid(ng-if='addCustomerForm.phone.$valid && addCustomerForm.phone.$dirty')
+                        i.fa.fa-check
+                    span.finvalid(ng-if='addCustomerForm.phone.$invalid && addCustomerForm.phone.$dirty')
+                        i.fa.fa-exclamation
+                .form-group
+                    input.form-control(type='text' name='address' ng-model='customerForm.address' placeholder='address (optional)')
+                    span.fvalid(ng-if='addCustomerForm.address.$valid && addCustomerForm.address.$dirty')
+                        i.fa.fa-check
+                    span.finvalid(ng-if='addCustomerForm.address.$invalid && addCustomerForm.address.$dirty')
+                        i.fa.fa-exclamation
+                .form-group
+                    button.btn-add-customer(type='submit' ng-disabled='addCustomerForm.$invalid') Submit
+                    
+        .buttons(ng-init='showForm=0')
+            // -button.btn.search-btn(ng-click='showForm = showForm !== 1 ? 1 : 0' title='Search customers')
+                i.fa.fa-search
+            button.btn.btn-add(ng-click='showForm = showForm !== 2 ? 2 : 0' title='Add a new customer')
+                i.fa.fa-plus
+        
+        // - Customer list
+        .customers
+            .customer(ng-repeat='customer in customerList.customers')
+                ul.list-inline.shadow(ng-init='panelState = 0')
+                    li {{customer.firstname + ' ' + customer.lastname}}
+                    li {{customer.email}}
+                    li.short {{customer.phone}}
+                    li.long {{customer.address}}
+                    li.pull-right.delete(ng-click='panelState = 1')
+                        button(type='button' data-toggle='modal' data-target='#deleteModal-{{customer._id}}')
+                            a(href='')
+                                i.fa.fa-trash
+                    li.pull-right.edit(ng-click='panelState !== 2 ? panelState = 2 : panelState = 0')
+                        button(type='button')
+                            a(href='')
+                                i.fa.fa-pencil
+                // - Edit Customer Panel
+                .edit-panel(ng-show='panelState === 2')
+                    form.edit-customer-form(action="{{'/api/edit-customer/' + customer._id }}" method='POST' name='editCustomerForm')
+                        .edit-explanation
+                            p Edit any or all of the customer fields
+                        .form-group
+                            input.form-control(type='text' name='firstname' ng-model='client.firstname' placeholder='first name')
+                            span.fvalid(ng-if='editCustomerForm.firstname.$valid && editCustomerForm.firstname.$dirty')
+                                i.fa.fa-check
+                            span.finvalid(ng-if='editCustomerForm.firstname.$invalid && editCustomerForm.firstname.$dirty')
+                                i.fa.fa-exclamation
+                        .form-group
+                            input.form-control(type='text' name='lastname' ng-model='client.lastname' placeholder='last name')
+                            span.fvalid(ng-if='editCustomerForm.lastname.$valid && editCustomerForm.lastname.$dirty')
+                                i.fa.fa-check
+                            span.finvalid(ng-if='editCustomerForm.lastname.$invalid && editCustomerForm.lastname.$dirty')
+                                i.fa.fa-exclamation
+                        .form-group
+                            input.form-control(type='email' name='email' ng-model='client.email' placeholder='email')
+                            span.fvalid(ng-if='editCustomerForm.email.$valid && editCustomerForm.email.$dirty')
+                                i.fa.fa-check
+                            span.finvalid(ng-if='editCustomerForm.email.$invalid && editCustomerForm.email.$dirty')
+                                i.fa.fa-exclamation
+                        .form-group
+                            input.form-control(type='text' name='phone' ng-model='client.phone' placeholder='phone')
+                            span.fvalid(ng-if='editCustomerForm.phone.$valid && editCustomerForm.phone.$dirty')
+                                i.fa.fa-check
+                            span.finvalid(ng-if='editCustomerForm.phone.$invalid && editCustomerForm.phone.$dirty')
+                                i.fa.fa-exclamation
+                        .form-group
+                            input.form-control(type='text' name='address' ng-model='client.address' placeholder='address')
+                            span.fvalid(ng-if='editCustomerForm.address.$valid && editCustomerForm.address.$dirty')
+                                i.fa.fa-check
+                            span.finvalid(ng-if='editCustomerForm.address.$invalid && editCustomerForm.address.$dirty')
+                                i.fa.fa-exclamation
+                        .form-group
+                            button.btn-add-customer(type='submit' ng-disabled='editCustomerForm.$invalid') Submit
+                
+                // - Delete Customer Modal
+                .delete-modal.modal.fade(ng-show='panelState === 1' tabindex='-1' role='dialog' id='deleteModal-{{customer._id}}')
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                button.close(type='button' data-dismiss='modal' aria-label='close')
+                                    span(aria-hidden='true' ng-click='panelState = 0') &times;
+                                h3.modal-title Confirmation
+                            .modal-body
+                                p Are you sure you want to delete 
+                                    b {{customer.firstname + ' ' + customer.lastname}}?
+                            .modal-footer
+                                button.btn.btn-danger(type='button')
+                                    a(href='/api/delete-customer/{{customer._id}}') Yes
+                                button.btn.btn-primary(type='button' data-dismiss='modal') No
+
+                    
