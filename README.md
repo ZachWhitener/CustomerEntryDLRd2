@@ -15,8 +15,10 @@ It is a MEAN app (Mongo, Express, Angular, NodeJs).
 
     `$ mongod`
     
-    If that doesn't work, try appending `--smallfiles`.
+    If that doesn't work, try appending `--smallfiles` to mongod.
 4) Start the NodeJs server:
     
     `$ node server.js`
+    
+If all went well, the app should now be running on port 8080.
     

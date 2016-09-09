@@ -10,6 +10,7 @@ var router = express();
 var server = http.createServer(router);
 
 mongoose.connect('mongodb://localhost/customers');
+
 // Express configs
 router.use(bodyParser());
 router.use(express.static(path.resolve(__dirname, 'public')));
