@@ -17,7 +17,7 @@ router.set('view engine', 'jade');
 router.set('views', process.cwd() + '/views');
 
 // Customer model
-var Customer = require('./models/customer.js');
+var Customer = require('./models/Customer.js');
 
 // home route
 router.get('/', getHome);
