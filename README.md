@@ -1,8 +1,6 @@
 ## Customer Entry Challenge
 
-
-This is an application built for the second round of code challenges throughout the interview process with Detroit Labs. 
-It is a MEAN app (Mongo, Express, Angular, NodeJs).
+A quick solution to solving a customer entry problem using a MEAN app. 
 
 ## Cloning the code and running the server
 
